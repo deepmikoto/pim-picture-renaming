@@ -9,7 +9,6 @@ while (($line = fgetcsv($file, null, ';')) !== false) {
 
 fclose($file);
 
-$inputFiles = scandir('input/', 1);
 chmod('output', 0777);
 
 $outputFiles = scandir('output/');
@@ -21,6 +20,9 @@ foreach ($outputFiles as $outputFile) {
 }
 
 chmod('output', 0777);
+
+
+$inputFiles = scandir('input/', 1);
 
 foreach ($inputFiles as $inputFile) {
     $fileEan = explode('_', $inputFile);
@@ -34,8 +36,25 @@ foreach ($inputFiles as $inputFile) {
 
         echo 'Renaming ' . $inputFile . ' tot ' . $newFileName . PHP_EOL;
         copy('input/' . $inputFile, 'output/' . $newFileName);
+    } else {
+        echo 'No mapping found for ean: ' . $fileEan . PHP_EOL;
+    }
+}
 
+$inputFiles_fullBody = scandir('input_fullbody/', 1);
 
+foreach ($inputFiles_fullBody as $inputFile) {
+    $fileEan = explode('_', $inputFile);
+    $fileEan = reset($fileEan);
+    $fileExt = explode('.', $inputFile);
+    $fileExt = $fileExt[count($fileExt) - 1];
+    if (array_key_exists('ean_' . $fileEan, $mapping)) {
+        $newFileName = $mapping['ean_' . $fileEan] . '-' . (false !== strpos($inputFile, 'Front') ? '9' : '10') . '.' . $fileExt;
+
+        $originalFile = file_get_contents('input_fullbody/' . $inputFile);
+
+        echo 'Renaming ' . $inputFile . ' to ' . $newFileName . PHP_EOL;
+        copy('input_fullbody/' . $inputFile, 'output/' . $newFileName);
     } else {
         echo 'No mapping found for ean: ' . $fileEan . PHP_EOL;
     }
