@@ -1,2 +1,2 @@
 @ECHO OFF
-php remaining.php
+php -f remaining.php
