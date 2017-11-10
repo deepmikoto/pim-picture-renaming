@@ -1,5 +1,7 @@
 /.idea/
 !input/.gitkeep
+!input_fullbody/.gitkeep
 !output/.gitkeep
 input/*
+input_fullbody/*
 output/*
