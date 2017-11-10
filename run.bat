@@ -1,2 +1,4 @@
-@ECHO OFF
+@ECHO ON
 php -f "renaming.php"
+
+PAUSE
