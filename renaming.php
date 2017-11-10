@@ -23,7 +23,8 @@ foreach ($outputFiles as $outputFile) {
 chmod('output', 0777);
 
 foreach ($inputFiles as $inputFile) {
-    $fileEan = reset(explode('_', $inputFile));
+    $fileEan = explode('_', $inputFile);
+    $fileEan = reset($fileEan);
     $fileExt = explode('.', $inputFile);
     $fileExt = $fileExt[count($fileExt) - 1];
     if (array_key_exists('ean_' . $fileEan, $mapping)) {
