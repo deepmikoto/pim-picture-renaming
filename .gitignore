@@ -1,0 +1,5 @@
+/.idea/
+!input/.gitkeep
+!output/.gitkeep
+input/*
+output/*
