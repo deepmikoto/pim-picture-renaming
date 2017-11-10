@@ -37,7 +37,9 @@ foreach ($inputFiles as $inputFile) {
         echo 'Renaming ' . $inputFile . ' tot ' . $newFileName . PHP_EOL;
         copy('input/' . $inputFile, 'output/' . $newFileName);
     } else {
-        echo 'No mapping found for ean: ' . $fileEan . PHP_EOL;
+        if (is_numeric($fileEan)) {
+            echo 'No mapping found for ean: ' . $fileEan . PHP_EOL;
+        }
     }
 }
 
@@ -56,7 +58,9 @@ foreach ($inputFiles_fullBody as $inputFile) {
         echo 'Renaming ' . $inputFile . ' to ' . $newFileName . PHP_EOL;
         copy('input_fullbody/' . $inputFile, 'output/' . $newFileName);
     } else {
-        echo 'No mapping found for ean: ' . $fileEan . PHP_EOL;
+        if (is_numeric($fileEan)) {
+            echo 'No mapping found for ean: ' . $fileEan . PHP_EOL;
+        }
     }
 }
 
