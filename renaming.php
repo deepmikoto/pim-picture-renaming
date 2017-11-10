@@ -32,7 +32,7 @@ foreach ($inputFiles as $inputFile) {
 
         $originalFile = file_get_contents('input/' . $inputFile);
 
-        echo 'Renaming ' . $inputFile . ' tot ' . $newFileName;
+        echo 'Renaming ' . $inputFile . ' tot ' . $newFileName . PHP_EOL;
         copy('input/' . $inputFile, 'output/' . $newFileName);
 
 
