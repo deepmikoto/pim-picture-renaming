@@ -1,2 +1,2 @@
 @ECHO ON
-php -f "remaining.php"
+php -f "renaming.php"
